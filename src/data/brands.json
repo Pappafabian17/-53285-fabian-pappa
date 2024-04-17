@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1",
+    "category": "Ford",
+    "url": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/ford.png"
+  },
+  {
+    "id": "2",
+    "category": "Renault",
+    "url": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/renault.png"
+  },
+  {
+    "id": "3",
+    "category": "Peugeot",
+    "url": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/peugeot.png"
+  },
+  {
+    "id": "4",
+    "category": "Fiat",
+    "url": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/fiat.png"
+  },
+  {
+    "id": "5",
+    "category": "Volkswagen",
+    "url": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/volkswagen.png"
+  },
+  {
+    "id": "6",
+    "category": "Kia",
+    "url": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/kia.png"
+  },
+  {
+    "id": "7",
+    "category": "Audi",
+    "url": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/audi.png"
+  },
+  {
+    "id": "8",
+    "category": "BMW",
+    "url": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/bmw.png"
+  },
+  {
+    "id": "9",
+    "category": "Mercedes-Benz",
+    "url": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/mercedes-benz.png"
+  },
+  {
+    "id": "10",
+    "category": "Toyota",
+    "url": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/toyota.png"
+  }
+]

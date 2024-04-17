@@ -1,20 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View, SafeAreaView, Platform } from "react-native";
+import { useFonts } from "expo-font";
+import Header from "./src/components/Header";
+import Home from "./src/screens/Home";
+import { useState } from "react";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const App = () => {
+  const [fontsLoaded, fontError] = useFonts({
+    Josefin: require("./assets/JosefinSans-Regular.ttf"),
+  });
 
+  if (!fontsLoaded || fontError) {
+    return null;
+  }
+
+  const [categorySelected, setCategorySelected] = useState("");
+
+  if (fontsLoaded && !fontError) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Header title={"Bienvenidos!"} />
+        {!categorySelected ? (
+          <Home setCategorySelected={setCategorySelected} />
+        ) : (
+          <Cars />
+        )}
+      </SafeAreaView>
+    );
+  }
+};
 const styles = StyleSheet.create({
   container: {
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: "center",
+    backgroundColor: "red",
   },
 });
+
+export default App;
