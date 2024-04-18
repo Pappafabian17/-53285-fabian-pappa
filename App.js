@@ -4,8 +4,10 @@ import { useFonts } from "expo-font";
 import Header from "./src/components/Header";
 import Home from "./src/screens/Home";
 import { useState } from "react";
+import Cars from "./src/screens/Cars";
 
 const App = () => {
+  const [categorySelected, setCategorySelected] = useState("");
   const [fontsLoaded, fontError] = useFonts({
     Josefin: require("./assets/JosefinSans-Regular.ttf"),
   });
@@ -14,8 +16,6 @@ const App = () => {
     return null;
   }
 
-  const [categorySelected, setCategorySelected] = useState("");
-
   if (fontsLoaded && !fontError) {
     return (
       <SafeAreaView style={styles.container}>
@@ -23,7 +23,10 @@ const App = () => {
         {!categorySelected ? (
           <Home setCategorySelected={setCategorySelected} />
         ) : (
-          <Cars />
+          <Cars
+            categorySelected={categorySelected}
+            setCategorySelected={setCategorySelected}
+          />
         )}
       </SafeAreaView>
     );
@@ -33,8 +36,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     flex: 1,
-    // alignItems: "center",
-    backgroundColor: "red",
+    alignItems: "center",
   },
 });
 

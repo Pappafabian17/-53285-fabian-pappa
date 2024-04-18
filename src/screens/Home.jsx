@@ -1,13 +1,23 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import brands from "../data/brands.json";
+import BrandsItems from "../components/BrandsItems";
 
 const Home = ({ setCategorySelected }) => {
   return (
     <View style={styles.flatListContainer}>
+      <View>
+        <Text style={styles.title}>Seleccione una Marca :</Text>
+      </View>
       <FlatList
         data={brands}
-        renderItem={({ item }) => <Text>{item.category}</Text>}
+        renderItem={({ item }) => (
+          <BrandsItems
+            style={styles.brandContainer}
+            setCategorySelected={setCategorySelected}
+            item={item}
+          />
+        )}
         keyExtractor={(element) => element.id}
         showsVerticalScrollIndicator={false}
       />
@@ -20,11 +30,15 @@ export default Home;
 const styles = StyleSheet.create({
   flatListContainer: {
     width: "100%",
-    backgroundColor: "blue",
+    backgroundColor: "#c9dbdb",
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     padding: 10,
+  },
+  title: {
+    fontSize: 25,
+    marginBottom: 23,
   },
 });
