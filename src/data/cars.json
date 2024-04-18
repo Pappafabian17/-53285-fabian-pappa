@@ -1,0 +1,452 @@
+[
+  {
+    "id": 1,
+    "title": "Ford Mustang",
+    "description": "Potente y deportivo",
+    "price": 35000,
+    "stock": 10,
+    "category": "Ford",
+    "url": "https://pictures.dealer.com/h/harvardfordfd/1183/c6d5f51cf4efa8ca4217894022b66e28x.jpg?impolicy=downsize&w=568"
+  },
+  {
+    "id": 2,
+    "title": "Renault Clio",
+    "description": "Compacto y eficiente",
+    "price": 20000,
+    "stock": 15,
+    "category": "Renault",
+    "url": "https://ik.imagekit.io/2ero5nzbxo2/tr:di-placeholder.png,q-70,w-375,q-70/FILES/generations/VkKzoExZ8W4ZjeeejSD0F2bFajmXMC3TWq1lifMB.png?ik-sdk-version=php-2.0.0"
+  },
+  {
+    "id": 3,
+    "title": "Peugeot 208",
+    "description": "Elegante y moderno",
+    "price": 22000,
+    "stock": 12,
+    "category": "Peugeot",
+    "url": "https://centraljeep.divit.com.ar/wp-content/uploads/2021/03/208-blanco-banquise.png"
+  },
+  {
+    "id": 4,
+    "title": "Fiat 500",
+    "description": "Estilo italiano",
+    "price": 18000,
+    "stock": 18,
+    "category": "Fiat",
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQna0KS37E_aYgUrCqNPcC-kywmRGyBxzWGFLrFFLKq4g&s"
+  },
+  {
+    "id": 5,
+    "title": "Volkswagen Golf",
+    "description": "Confiable y versátil",
+    "price": 25000,
+    "stock": 14,
+    "category": "Volkswagen",
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9t9UmU4zcRujyZGfWTJINu7YDkR1DluwuAh6R9mpacQ&s"
+  },
+  {
+    "id": 6,
+    "title": "Kia Sportage",
+    "description": "Espacioso y confortable",
+    "price": 27000,
+    "stock": 11,
+    "category": "Kia",
+    "url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fmetrokia.co%2Fmodelos%2Fsuv-sportage%2F&psig=AOvVaw3JNg_v7hnIQ2e2koGpWMSb&ust=1713523650405000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKjwmdTLy4UDFQAAAAAdAAAAABAJ"
+  },
+  {
+    "id": 7,
+    "title": "Audi A4",
+    "description": "Lujo y tecnología",
+    "price": 40000,
+    "stock": 8,
+    "category": "Audi",
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcsUOqzNEGuT0cJi4oYz2Y-8suVymdMlEmcVfcE-r5uw&s"
+  },
+  {
+    "id": 8,
+    "title": "BMW Serie 3",
+    "description": "Deportividad y elegancia",
+    "price": 45000,
+    "stock": 9,
+    "category": "BMW",
+    "url": "https://d1cjrn2338s5db.cloudfront.net/gamas/images/8-270-1991-1565370785.png"
+  },
+  {
+    "id": 9,
+    "title": "Mercedes-Benz Clase C",
+    "description": "Estilo y calidad",
+    "price": 48000,
+    "stock": 7,
+    "category": "Mercedes-Benz",
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsRnjIloHzjkBjWFc0O3_wqrf8KPPwus2RiOfdEI8T_Q&s"
+  },
+  {
+    "id": 10,
+    "title": "Toyota Corolla",
+    "description": "Confiabilidad y durabilidad",
+    "price": 23000,
+    "stock": 13,
+    "category": "Toyota",
+    "url": "https://dodomat.com.my/cdn/shop/products/car-mats-toyota-corolla-altis-2000-2007-e130.png?v=1676362734"
+  },
+  {
+    "id": 11,
+    "title": "Ford Focus",
+    "description": "Compacto y ágil",
+    "price": 21000,
+    "stock": 16,
+    "category": "Ford",
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGtxevVnrWCfK7eLJ91ffR6TswOl0iBxrrD7IG9uBEkA&s"
+  },
+  {
+    "id": 12,
+    "title": "Renault Megane",
+    "description": "Estilo y confort",
+    "price": 24000,
+    "stock": 13,
+    "category": "Renault",
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlerSR9IJgIgeoLWunJnhzV2iXCF7aSwqmWeKxSbYAHw&s"
+  },
+  {
+    "id": 13,
+    "title": "Peugeot 3008",
+    "description": "SUV moderno",
+    "price": 32000,
+    "stock": 9,
+    "category": "Peugeot",
+    "url": "https://mlaoe6txrf0v.i.optimole.com/cb:YhFb.539ee/w:577/h:433/q:mauto/f:best/https://hacheautomotriz.com/wp-content/uploads/2023/11/6FD1B780-2346-4D23-BC4E-85DDD109950E-removebg-preview.png"
+  },
+  {
+    "id": 14,
+    "title": "Fiat Panda",
+    "description": "Compacto y práctico",
+    "price": 15000,
+    "stock": 20,
+    "category": "Fiat",
+    "url": "https://cdn.drivek.com/configurator-icon/cars/es/800/FIAT/PANDA/40054_BERLINA-5-PUERTAS/fiat-panda-side-view.png"
+  },
+  {
+    "id": 15,
+    "title": "Volkswagen Polo",
+    "description": "Eficiente y versátil",
+    "price": 19000,
+    "stock": 15,
+    "category": "Volkswagen",
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXT5iTzuBDGkh3XUJzwEIwOXZhNzNZbALRSNkpXpjMaQ&s"
+  },
+  {
+    "id": 16,
+    "title": "Kia Rio",
+    "description": "Compacto y dinámico",
+    "price": 20000,
+    "stock": 14,
+    "category": "Kia",
+    "url": "https://s3.amazonaws.com/kia-simotor/Rio_Sedan_Gris_13_1a18483756.png"
+  },
+  {
+    "id": 17,
+    "title": "Audi Q5",
+    "description": "SUV premium",
+    "price": 48000,
+    "stock": 8,
+    "category": "Audi",
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTt7BI_iDHQxvRw0g_R22_9FOIlHuj1h2EyWsUCfqjDw&s"
+  },
+  {
+    "id": 18,
+    "title": "BMW X3",
+    "description": "SUV deportivo",
+    "price": 55000,
+    "stock": 7,
+    "category": "BMW",
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAqSkeMfGNBM1fkxbKUfNnmrr-nS07PZ2ypODLF-zNXQ&s"
+  },
+  {
+    "id": 19,
+    "title": "Mercedes-Benz Clase E",
+    "description": "Elegancia y tecnología",
+    "price": 60000,
+    "stock": 6,
+    "category": "Mercedes-Benz",
+    "url": "https://www.mercedes-benz.com.ar/passengercars/owners-manuals/es-ar/vehicles/mercedes-benz-clase-e-sedan-320.png"
+  },
+  {
+    "id": 20,
+    "title": "Toyota RAV4",
+    "description": "SUV versátil",
+    "price": 35000,
+    "stock": 10,
+    "category": "Toyota",
+    "url": "https://www.motortrend.com/uploads/sites/10/2015/11/2012-toyota-rav4-sport-suv-angular-front.png?fit=around%7C875:492"
+  },
+  {
+    "id": 21,
+    "title": "Ford Fiesta",
+    "description": "Compacto y eficiente",
+    "price": 18000,
+    "stock": 15,
+    "category": "Ford",
+    "url": "https://noticias.motorflash.com/wp-content/uploads/fiesta_Azul_candy.png"
+  },
+  {
+    "id": 22,
+    "title": "Renault Captur",
+    "description": "SUV urbano",
+    "price": 25000,
+    "stock": 12,
+    "category": "Renault",
+    "url": "https://www.grupor5.com/hs-fs/hubfs/buscador-precios-vehiculos/renault-captur.png?width=702&height=426&name=renault-captur.png"
+  },
+  {
+    "id": 23,
+    "title": "Peugeot 508",
+    "description": "Berlina elegante",
+    "price": 35000,
+    "stock": 8,
+    "category": "Peugeot",
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMfR6qFPczQ-50A4leyC5lxkZk1oRk4MZ9dAY43v5-Dw&s"
+  },
+  {
+    "id": 24,
+    "title": "Fiat Tipo",
+    "description": "Compacto y versátil",
+    "price": 19000,
+    "stock": 14,
+    "category": "Fiat",
+    "url": "https://cdn.autobip.com/photos/car_models/411.webp"
+  },
+  {
+    "id": 25,
+    "title": "Volkswagen Gol",
+    "description": "Auto familiar",
+    "price": 30000,
+    "stock": 10,
+    "category": "Volkswagen",
+    "url": "https://www.autoadvisor.com.ar/media/model_generations/Volkswagen%20Gol%205/VW-Gol-Trend.png"
+  },
+  {
+    "id": 26,
+    "title": "Kia Seltos",
+    "description": "SUV compacto",
+    "price": 23000,
+    "stock": 13,
+    "category": "Kia",
+    "url": "https://example.com/kia-seltos.jpg"
+  },
+  {
+    "id": 27,
+    "title": "Fiat uno",
+    "description": "Elegancia y tecnología",
+    "price": 38000,
+    "stock": 9,
+    "category": "Fiat",
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqDKe235fVJaZHkphnFIdStK95hCRKVfVUxEc5WCkK9w&s"
+  },
+  {
+    "id": 28,
+    "title": "BMW Serie 1",
+    "description": "Compacto y dinámico",
+    "price": 32000,
+    "stock": 11,
+    "category": "BMW",
+    "url": "https://baic.pe/wp-content/uploads/2023/09/x55plus_405x215.png"
+  },
+  {
+    "id": 29,
+    "title": "Mercedes-Benz Clase A",
+    "description": "Estilo y confort",
+    "price": 36000,
+    "stock": 7,
+    "category": "Mercedes-Benz",
+    "url": "https://www.mercedes-benz.com.ar/content/dam/hq/passengercars/cars/a-class/sedan-v177-fl-pi/modeloverview/08-2022/images/mercedes-benz-a-class-v177-696x392-08-2022.png"
+  },
+  {
+    "id": 30,
+    "title": "Toyota Yaris",
+    "description": "Compacto y eficiente",
+    "price": 17000,
+    "stock": 16,
+    "category": "Toyota",
+    "url": "https://baic.pe/wp-content/uploads/2023/09/x55plus_405x215.png"
+  },
+  {
+    "id": 31,
+    "title": "Ford Ranger",
+    "description": "Pick-up robusta",
+    "price": 30000,
+    "stock": 10,
+    "category": "Ford",
+    "url": "https://cdn.autopapo.com.br/carro/ford/ranger-32-td-4x4-cd-limited-auto-2015/destaque-v1.png"
+  },
+  {
+    "id": 32,
+    "title": "Renault Koleos",
+    "description": "SUV familiar",
+    "price": 28000,
+    "stock": 12,
+    "category": "Renault",
+    "url": "https://baic.pe/wp-content/uploads/2023/09/x55plus_405x215.png"
+  },
+  {
+    "id": 33,
+    "title": "Peugeot 206",
+    "description": "SUV compacto",
+    "price": 22000,
+    "stock": 14,
+    "category": "Peugeot",
+    "url": "https://ik.imagekit.io/2ero5nzbxo2/tr:di-placeholder.png,q-70,w-375,q-70/FILES/generations/RjIOansRkbugLcmnWpB6AHstmH5Ay09V48dkv7pB.png?ik-sdk-version=php-2.0.0"
+  },
+  {
+    "id": 34,
+    "title": "Fiat Doblo",
+    "description": "Espaciosa y versátil",
+    "price": 21000,
+    "stock": 15,
+    "category": "Fiat",
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJgKAVHos2pWk3OWFcxKweR3DV0Opzn7UKq8KSjb8fvTQcAMgiD8_7mt43xlCCgOGhwMg&usqp=CAU"
+  },
+  {
+    "id": 35,
+    "title": "Volkswagen Passat",
+    "description": "Berlina elegante",
+    "price": 32000,
+    "stock": 9,
+    "category": "Volkswagen",
+    "url": "https://images.prd.kavak.io/eyJidWNrZXQiOiJrYXZhay1pbWFnZXMiLCJrZXkiOiJhc3NldHMvaW1hZ2VzL2ZhbWlsaWVzL3ZvbGtzd2FnZW4vcGFzc2F0LTIwMTAtMjAxOS1zZWRhbi5wbmciLCJlZGl0cyI6e319"
+  },
+  {
+    "id": 36,
+    "title": "Kia Carnival",
+    "description": "Monovolumen espacioso",
+    "price": 35000,
+    "stock": 8,
+    "category": "Kia",
+    "url": "https://baic.pe/wp-content/uploads/2023/09/x55plus_405x215.png"
+  },
+  {
+    "id": 37,
+    "title": "Audi Q7",
+    "description": "SUV de lujo",
+    "price": 65000,
+    "stock": 6,
+    "category": "Audi",
+    "url": "https://baic.pe/wp-content/uploads/2023/09/x55plus_405x215.png"
+  },
+  {
+    "id": 38,
+    "title": "BMW X5",
+    "description": "SUV premium",
+    "price": 60000,
+    "stock": 7,
+    "category": "BMW",
+    "url": "https://baic.pe/wp-content/uploads/2023/09/x55plus_405x215.png"
+  },
+  {
+    "id": 39,
+    "title": "Mercedes-Benz Clase S",
+    "description": "Lujo y confort",
+    "price": 80000,
+    "stock": 4,
+    "category": "Mercedes-Benz",
+    "url": "https://baic.pe/wp-content/uploads/2023/09/x55plus_405x215.png"
+  },
+  {
+    "id": 40,
+    "title": "Toyota Hilux",
+    "description": "Todo terreno robusto",
+    "price": 70000,
+    "stock": 5,
+    "category": "Toyota",
+    "url": "https://static.wixstatic.com/media/60c9aa_f0ed73f42aa545618f17896603a690c2~mv2.png/v1/fill/w_480,h_360,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/60c9aa_f0ed73f42aa545618f17896603a690c2~mv2.png"
+  },
+  {
+    "id": 41,
+    "title": "Ford Edge",
+    "description": "SUV mediano",
+    "price": 35000,
+    "stock": 8,
+    "category": "Ford",
+    "url": "https://baic.pe/wp-content/uploads/2023/09/x55plus_405x215.png"
+  },
+  {
+    "id": 42,
+    "title": "Renault Talisman",
+    "description": "Berlina elegante",
+    "price": 30000,
+    "stock": 10,
+    "category": "Renault",
+    "url": "https://baic.pe/wp-content/uploads/2023/09/x55plus_405x215.png"
+  },
+  {
+    "id": 43,
+    "title": "Peugeot 3008 Hybrid",
+    "description": "SUV híbrido",
+    "price": 38000,
+    "stock": 7,
+    "category": "Peugeot",
+    "url": "https://baic.pe/wp-content/uploads/2023/09/x55plus_405x215.png"
+  },
+  {
+    "id": 44,
+    "title": "Fiat 500X",
+    "description": "SUV urbano",
+    "price": 25000,
+    "stock": 12,
+    "category": "Fiat",
+    "url": "https://baic.pe/wp-content/uploads/2023/09/x55plus_405x215.png"
+  },
+  {
+    "id": 45,
+    "title": "Volkswagen T-Roc",
+    "description": "SUV compacto",
+    "price": 28000,
+    "stock": 9,
+    "category": "Volkswagen",
+    "url": "https://baic.pe/wp-content/uploads/2023/09/x55plus_405x215.png"
+  },
+  {
+    "id": 46,
+    "title": "Kia Stonic",
+    "description": "SUV pequeño",
+    "price": 20000,
+    "stock": 15,
+    "category": "Kia",
+    "url": "https://baic.pe/wp-content/uploads/2023/09/x55plus_405x215.png"
+  },
+  {
+    "id": 47,
+    "title": "Audi Q3",
+    "description": "SUV premium compacto",
+    "price": 42000,
+    "stock": 6,
+    "category": "Audi",
+    "url": "https://baic.pe/wp-content/uploads/2023/09/x55plus_405x215.png"
+  },
+  {
+    "id": 48,
+    "title": "BMW Serie 2",
+    "description": "Coupé deportivo",
+    "price": 38000,
+    "stock": 8,
+    "category": "BMW",
+    "url": "https://baic.pe/wp-content/uploads/2023/09/x55plus_405x215.png"
+  },
+  {
+    "id": 49,
+    "title": "Mercedes-Benz Clase B",
+    "description": "Monovolumen compacto",
+    "price": 32000,
+    "stock": 10,
+    "category": "Mercedes-Benz",
+    "url": "https://baic.pe/wp-content/uploads/2023/09/x55plus_405x215.png"
+  },
+  {
+    "id": 50,
+    "title": "Toyota Etios",
+    "description": "Híbrido líder en eficiencia",
+    "price": 28000,
+    "stock": 12,
+    "category": "Toyota",
+    "url": "https://i0.wp.com/autoaldia.tv/wp-content/uploads/2016/07/etios.png?fit=550%2C316&ssl=1"
+  }
+]
