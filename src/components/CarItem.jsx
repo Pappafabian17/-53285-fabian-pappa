@@ -1,17 +1,22 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text } from "react-native";
 import React from "react";
 import Card from "./Card";
 
-const CarItem = ({ car }) => {
-  console.log("CAR DE ITEM", car);
+const CarItem = ({ car, setCarIdSelected = () => {} }) => {
+  // console.log("CAR DE ITEM", car);
   return (
     <Card style={styles.carCard}>
-      <Text style={styles.textCar}>{car.title}</Text>
-      <Image
-        resizeMode="cover"
-        style={styles.image}
-        source={{ uri: car.url }}
-      />
+      <Pressable
+        style={styles.pressable}
+        onPress={() => setCarIdSelected(car.id)}
+      >
+        <Text style={styles.textCar}>{car.title}</Text>
+        <Image
+          resizeMode="contain"
+          style={styles.image}
+          source={{ uri: car.url }}
+        />
+      </Pressable>
     </Card>
   );
 };
@@ -36,5 +41,12 @@ const styles = StyleSheet.create({
   textCar: {
     width: "35%",
     color: "black",
+  },
+  pressable: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingLeft: 10,
   },
 });

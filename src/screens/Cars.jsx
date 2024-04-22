@@ -4,18 +4,19 @@ import carsData from "../data/cars.json";
 import SearchBar from "../components/SearchBar";
 import CarItem from "../components/CarItem";
 
-const Cars = ({ categorySelected = "", setCategorySelected = () => {} }) => {
+const Cars = ({
+  categorySelected = "",
+  setCategorySelected = () => {},
+  setCarIdSelected = () => {},
+}) => {
   const [word, setWord] = useState("");
   const [carFiltered, setCarFiltered] = useState([]);
   const [error, setError] = useState("");
-
-  console.log("categorySelected", categorySelected);
 
   useEffect(() => {
     //filtrado de productos por categoria
     regex = /\d/;
     const hasDigits = regex.test(word);
-    // console.log("Tiene digito? ", hasDigits);
 
     if (hasDigits) {
       setError("Don't use digits");
@@ -24,11 +25,9 @@ const Cars = ({ categorySelected = "", setCategorySelected = () => {} }) => {
     const carsPreFiltered = carsData.filter(
       (car) => car.category === categorySelected.category
     );
-    console.log("preFiltro", carsPreFiltered);
     const carFilteredByUser = carsPreFiltered.filter((car) =>
       car.title.toLocaleLowerCase().includes(word.toLocaleLowerCase())
     );
-    console.log("filtro de usuario", carFilteredByUser);
     setCarFiltered(carFilteredByUser);
     setError("");
   }, [word, categorySelected]);
@@ -42,7 +41,9 @@ const Cars = ({ categorySelected = "", setCategorySelected = () => {} }) => {
       />
       <FlatList
         data={carFiltered}
-        renderItem={({ item }) => <CarItem car={item} />}
+        renderItem={({ item }) => (
+          <CarItem car={item} setCarIdSelected={setCarIdSelected} />
+        )}
         keyExtractor={(car) => car.id}
       />
     </View>
