@@ -29,7 +29,7 @@ const CarDetail = ({ idSelected, setCarIdSelected = () => {} }) => {
   }, [idSelected]);
 
   return (
-    <View>
+    <View style={styles.mainDetailContainer}>
       <Button onPress={() => setCarIdSelected("")} title="Volver" />
       {carDet ? (
         <View
@@ -67,6 +67,9 @@ const CarDetail = ({ idSelected, setCarIdSelected = () => {} }) => {
 export default CarDetail;
 
 const styles = StyleSheet.create({
+  mainDetailContainer: {
+    width: "100%",
+  },
   mainContainer: {
     flexDirection: "column",
     justifyContent: "center",

@@ -6,6 +6,7 @@ import Home from "./src/screens/Home";
 import { useState } from "react";
 import Cars from "./src/screens/Cars";
 import CarDetail from "./src/screens/CarDetail";
+import Navigator from "./src/navigation/Navigator";
 
 const App = () => {
   const [categorySelected, setCategorySelected] = useState("");
@@ -23,6 +24,7 @@ const App = () => {
   if (fontsLoaded && !fontError) {
     return (
       <SafeAreaView style={styles.container}>
+        {/* <Navigator /> */}
         <Header title={"Bienvenidos!"} />
         {!categorySelected ? (
           <Home setCategorySelected={setCategorySelected} />
