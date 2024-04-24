@@ -2,13 +2,13 @@ import { Image, Pressable, StyleSheet, Text } from "react-native";
 import React from "react";
 import Card from "./Card";
 
-const CarItem = ({ car, setCarIdSelected = () => {} }) => {
+const CarItem = ({ car, navigation }) => {
   // console.log("CAR DE ITEM", car);
   return (
     <Card style={styles.carCard}>
       <Pressable
         style={styles.pressable}
-        onPress={() => setCarIdSelected(car.id)}
+        onPress={() => navigation.navigate("CarDetail", { carId: car.id })}
       >
         <Text style={styles.textCar}>{car.title}</Text>
         <Image

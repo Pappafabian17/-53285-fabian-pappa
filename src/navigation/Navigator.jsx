@@ -12,8 +12,24 @@ const Stack = createNativeStackNavigator();
 const Navigator = () => {
   return (
     <NavigationContainer>
-      <Header title={"SELLCARS"} />
-      <Stack.Navigator>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={({ route }) => ({
+          header: () => {
+            return (
+              <Header
+                title={`SELLCARS : ${
+                  route.name === "Home"
+                    ? "Marcas"
+                    : route.name === "Cars"
+                    ? route.params.category
+                    : "Detalle"
+                }`}
+              />
+            );
+          },
+        })}
+      >
         <Stack.Screen component={Home} name="Home" />
         <Stack.Screen component={Cars} name="Cars" />
         <Stack.Screen component={CarDetail} name="CarDetail" />

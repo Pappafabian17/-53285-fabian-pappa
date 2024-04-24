@@ -9,10 +9,11 @@ import {
 import React, { useEffect, useState } from "react";
 import carData from "../data/cars.json";
 
-const CarDetail = ({ idSelected, setCarIdSelected = () => {} }) => {
+const CarDetail = ({ navigation, route }) => {
   const [carDet, setCarDet] = useState(null);
   const [orientation, setOrientation] = useState("portrait");
   const { width, height } = useWindowDimensions();
+  const { carId: idSelected } = route.params;
   //Landscape = horizontal
   //Portrait = vertical
 
@@ -30,7 +31,7 @@ const CarDetail = ({ idSelected, setCarIdSelected = () => {} }) => {
 
   return (
     <View style={styles.mainDetailContainer}>
-      <Button onPress={() => setCarIdSelected("")} title="Volver" />
+      <Button onPress={() => navigation.goBack()} title="Volver" />
       {carDet ? (
         <View
           style={

@@ -4,15 +4,14 @@ import carsData from "../data/cars.json";
 import SearchBar from "../components/SearchBar";
 import CarItem from "../components/CarItem";
 
-const Cars = ({
-  categorySelected = "",
-  setCategorySelected = () => {},
-  setCarIdSelected = () => {},
-}) => {
+const Cars = ({ navigation, route }) => {
   const [word, setWord] = useState("");
   const [carFiltered, setCarFiltered] = useState([]);
   const [error, setError] = useState("");
 
+  const { category: categorySelected } = route.params;
+
+  console.log("ruta", route);
   useEffect(() => {
     //filtrado de productos por categoria
     regex = /\d/;
@@ -23,7 +22,8 @@ const Cars = ({
       return;
     }
     const carsPreFiltered = carsData.filter(
-      (car) => car.category === categorySelected.category
+      //antes tenia car.category === categorySelected.categoy porque categorySelected es un objeto
+      (car) => car.category === categorySelected
     );
     const carFilteredByUser = carsPreFiltered.filter((car) =>
       car.title.toLocaleLowerCase().includes(word.toLocaleLowerCase())
@@ -37,12 +37,12 @@ const Cars = ({
       <SearchBar
         error={error}
         onSearch={setWord}
-        goBack={() => setCategorySelected("")}
+        goBack={() => navigation.goBack()}
       />
       <FlatList
         data={carFiltered}
         renderItem={({ item }) => (
-          <CarItem car={item} setCarIdSelected={setCarIdSelected} />
+          <CarItem car={item} navigation={navigation} />
         )}
         keyExtractor={(car) => car.id}
       />

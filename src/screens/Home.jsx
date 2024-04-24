@@ -3,7 +3,7 @@ import React from "react";
 import brands from "../data/brands.json";
 import BrandsItems from "../components/BrandsItems";
 
-const Home = ({ setCategorySelected }) => {
+const Home = ({ navigation }) => {
   return (
     <View style={styles.flatListContainer}>
       <View>
@@ -14,7 +14,7 @@ const Home = ({ setCategorySelected }) => {
         renderItem={({ item }) => (
           <BrandsItems
             style={styles.brandContainer}
-            setCategorySelected={setCategorySelected}
+            navigation={navigation}
             item={item}
           />
         )}
