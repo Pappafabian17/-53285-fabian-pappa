@@ -3,9 +3,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import CarDetail from "../screens/CarDetail";
 import Cars from "../screens/Cars";
-import Home from "../screens/Home";
 import Header from "../components/Header";
 import { StyleSheet } from "react-native";
+import Home from "../screens/Home";
 
 const Stack = createNativeStackNavigator();
 

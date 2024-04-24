@@ -3,7 +3,8 @@ import { Image } from "react-native";
 import React from "react";
 import Card from "./Card";
 
-const BrandsItems = ({ setCategorySelected = () => {}, item }) => {
+const BrandsItems = ({ item, setCategorySelected = () => {} }) => {
+  console.log("item ", item);
   return (
     <Card style={{ marginVertical: 10, marginHorizontal: 10 }}>
       <Pressable onPress={() => setCategorySelected(item)}>
