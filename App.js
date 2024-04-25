@@ -1,5 +1,4 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, SafeAreaView, Platform } from "react-native";
+import { StyleSheet, SafeAreaView, Platform, StatusBar } from "react-native";
 import { useFonts } from "expo-font";
 import Navigator from "./src/navigation/Navigator";
 

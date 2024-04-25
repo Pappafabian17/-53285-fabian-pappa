@@ -6,34 +6,15 @@ import Cars from "../screens/Cars";
 import Header from "../components/Header";
 import { StyleSheet } from "react-native";
 import Home from "../screens/Home";
+import HomeStackNavigator from "./HomeStackNavigator";
+import BottomTabNavigator from "./BottomTabNavigator";
 
 const Stack = createNativeStackNavigator();
 
 const Navigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={({ route }) => ({
-          header: () => {
-            return (
-              <Header
-                title={`SELLCARS : ${
-                  route.name === "Home"
-                    ? "Marcas"
-                    : route.name === "Cars"
-                    ? route.params.category
-                    : "Detalle"
-                }`}
-              />
-            );
-          },
-        })}
-      >
-        <Stack.Screen component={Home} name="Home" />
-        <Stack.Screen component={Cars} name="Cars" />
-        <Stack.Screen component={CarDetail} name="CarDetail" />
-      </Stack.Navigator>
+      <BottomTabNavigator />
     </NavigationContainer>
   );
 };
