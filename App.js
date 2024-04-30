@@ -1,7 +1,8 @@
 import { StyleSheet, SafeAreaView, Platform, StatusBar } from "react-native";
 import { useFonts } from "expo-font";
 import Navigator from "./src/navigation/Navigator";
-
+import { Provider } from "react-redux";
+import store from "./src/Store";
 const App = () => {
   const [fontsLoaded, fontError] = useFonts({
     Josefin: require("./assets/JosefinSans-Regular.ttf"),
@@ -14,7 +15,9 @@ const App = () => {
   if (fontsLoaded && !fontError) {
     return (
       <SafeAreaView style={styles.container}>
-        <Navigator />
+        <Provider store={store}>
+          <Navigator />
+        </Provider>
       </SafeAreaView>
     );
   }
