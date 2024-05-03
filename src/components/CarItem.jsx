@@ -1,15 +1,21 @@
 import { Image, Pressable, StyleSheet, Text } from "react-native";
 import React from "react";
 import Card from "./Card";
+import { useDispatch } from "react-redux";
+import { setIdSelected } from "../features/Shop/shopSlice";
 
 const CarItem = ({ car, navigation }) => {
   // console.log("CAR DE ITEM", car);
+  const dispatch = useDispatch();
+
+  const handleNavigate = () => {
+    dispatch(setIdSelected(car.id));
+    navigation.navigate("CarDetail", { carId: car.id });
+  };
+  console.log("car", car);
   return (
     <Card style={styles.carCard}>
-      <Pressable
-        style={styles.pressable}
-        onPress={() => navigation.navigate("CarDetail", { carId: car.id })}
-      >
+      <Pressable style={styles.pressable} onPress={handleNavigate}>
         <Text style={styles.textCar}>{car.title}</Text>
         <Image
           resizeMode="contain"

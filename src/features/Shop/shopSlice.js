@@ -5,7 +5,7 @@ const shopSlice = createSlice({
   initialState: {
     value: {
       categorySelected: "",
-      itemIdSelected,
+      itemIdSelected: "",
     },
   },
   reducers: {

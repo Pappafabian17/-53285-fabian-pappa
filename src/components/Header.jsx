@@ -1,12 +1,17 @@
 import { StyleSheet, Text, View, useWindowDimensions } from "react-native";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Header = ({ route }) => {
+  const categorySelected = useSelector(
+    (state) => state.shop.value.categorySelected
+  );
+  console.log(categorySelected);
   const { height, width } = useWindowDimensions();
   return (
     <View style={styles.container}>
       <Text style={width > 360 ? styles.text : styles.textSm}>
-        {route.name}
+        {categorySelected ? categorySelected : route.name}
       </Text>
     </View>
   );

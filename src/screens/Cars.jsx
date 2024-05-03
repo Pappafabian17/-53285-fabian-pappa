@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import carsData from "../data/cars.json";
 import SearchBar from "../components/SearchBar";
 import CarItem from "../components/CarItem";
+import { useDispatch } from "react-redux";
+import { setCategorySelected } from "../features/Shop/shopSlice";
 
 const Cars = ({ navigation, route }) => {
   const [word, setWord] = useState("");
@@ -10,6 +12,11 @@ const Cars = ({ navigation, route }) => {
   const [error, setError] = useState("");
 
   const { category: categorySelected } = route.params;
+  const dispatch = useDispatch();
+  const goBack = () => {
+    dispatch(setCategorySelected(""));
+    navigation.goBack();
+  };
 
   console.log("ruta", route);
   useEffect(() => {
@@ -34,11 +41,7 @@ const Cars = ({ navigation, route }) => {
 
   return (
     <View style={styles.flatListContainer}>
-      <SearchBar
-        error={error}
-        onSearch={setWord}
-        goBack={() => navigation.goBack()}
-      />
+      <SearchBar error={error} onSearch={setWord} goBack={goBack} />
       <FlatList
         data={carFiltered}
         renderItem={({ item }) => (
