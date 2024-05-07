@@ -12,7 +12,6 @@ const CarItem = ({ car, navigation }) => {
     dispatch(setIdSelected(car.id));
     navigation.navigate("CarDetail", { carId: car.id });
   };
-  console.log("car", car);
   return (
     <Card style={styles.carCard}>
       <Pressable style={styles.pressable} onPress={handleNavigate}>

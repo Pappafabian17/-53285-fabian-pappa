@@ -1,10 +1,11 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useState, useEffect } from "react";
-import carsData from "../data/cars.json";
+// import carsData from "../data/cars.json";
 import SearchBar from "../components/SearchBar";
 import CarItem from "../components/CarItem";
 import { useDispatch } from "react-redux";
 import { setCategorySelected } from "../features/Shop/shopSlice";
+import { useGetCarsByCategoryQuery } from "../services/service";
 
 const Cars = ({ navigation, route }) => {
   const [word, setWord] = useState("");
@@ -18,26 +19,31 @@ const Cars = ({ navigation, route }) => {
     navigation.goBack();
   };
 
-  console.log("ruta", route);
+  const {
+    data: carsFetched,
+    error: errorFromFetch,
+    isLoading,
+  } = useGetCarsByCategoryQuery(categorySelected);
+
   useEffect(() => {
-    //filtrado de productos por categoria
     regex = /\d/;
     const hasDigits = regex.test(word);
-
     if (hasDigits) {
       setError("Don't use digits");
       return;
     }
-    const carsPreFiltered = carsData.filter(
-      //antes tenia car.category === categorySelected.categoy porque categorySelected es un objeto
-      (car) => car.category === categorySelected
-    );
-    const carFilteredByUser = carsPreFiltered.filter((car) =>
-      car.title.toLocaleLowerCase().includes(word.toLocaleLowerCase())
-    );
-    setCarFiltered(carFilteredByUser);
-    setError("");
-  }, [word, categorySelected]);
+    // const carsPreFiltered = carsData.filter(
+    //   //antes tenia car.category === categorySelected.categoy porque categorySelected es un objeto
+    //   (car) => car.category === categorySelected
+    // );
+    if (!isLoading) {
+      const carFilteredByUser = carsFetched?.filter((car) =>
+        car.title.toLocaleLowerCase().includes(word.toLocaleLowerCase())
+      );
+      setCarFiltered(carFilteredByUser);
+      setError("");
+    }
+  }, [word, categorySelected, carsFetched, isLoading]);
 
   return (
     <View style={styles.flatListContainer}>

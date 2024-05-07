@@ -67,23 +67,23 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 10,
-    backgroundColor: "#fffff",
+    backgroundColor: "#ffffff",
   },
   span: {
-    backgroundColor: "#fffff",
+    backgroundColor: "#ffffff",
     width: "60%",
     padding: 10,
     textAlign: "center",
     fontSize: 20,
-    color: "#black",
+    color: "black",
   },
   spanInput: {
-    backgroundColor: "#fffff",
+    backgroundColor: "#ffffff",
     width: "60%",
     padding: 10,
     textAlign: "center",
     fontSize: 16,
-    color: "#fffff",
+    color: "#ffffff",
   },
   buttonText: {
     fontSize: 18,

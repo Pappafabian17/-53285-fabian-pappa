@@ -1,15 +1,21 @@
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import CartItem from "../components/CartItem";
-import CartData from "../data/cart.json";
+import { useSelector } from "react-redux";
+// import CartData from "../data/cart.json";
 
 const Cart = () => {
   // console.log(CartData);
-  const total = CartData.reduce(
+
+  const { items: CartData, total } = useSelector((state) => state.cart.value);
+
+  console.log("CAAAAART=====", CartData);
+
+  /* const total = CartData.reduce(
     (acumulador, currentItem) =>
       (acumulador += currentItem.price * currentItem.quantity),
     0
-  );
+  ); */
 
   return (
     <View style={styles.container}>

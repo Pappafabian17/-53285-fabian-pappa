@@ -7,13 +7,20 @@ import {
   useWindowDimensions,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import carData from "../data/cars.json";
+// import carData from "../data/cars.json";
+import { useGetCarByIdQuery } from "../services/service";
+import { useDispatch } from "react-redux";
+import { addCartItem } from "../features/Cart/cartSlice";
 
 const CarDetail = ({ navigation, route }) => {
-  const [carDet, setCarDet] = useState(null);
+  const dispatch = useDispatch();
+  // const [carDet, setCarDet] = useState(null);
   const [orientation, setOrientation] = useState("portrait");
   const { width, height } = useWindowDimensions();
   const { carId: idSelected } = route.params;
+
+  const { data: carDet, error, isLoading } = useGetCarByIdQuery(idSelected);
+
   //Landscape = horizontal
   //Portrait = vertical
 
@@ -24,10 +31,14 @@ const CarDetail = ({ navigation, route }) => {
 
   console.log(orientation);
 
-  useEffect(() => {
+  /*  useEffect(() => {
     const carSelected = carData.find((car) => car.id === idSelected);
     setCarDet(carSelected);
-  }, [idSelected]);
+  }, [idSelected]); */
+
+  const handleAddCart = () => {
+    dispatch(addCartItem({ ...carDet, quantity: 1 }));
+  };
 
   return (
     <View style={styles.mainDetailContainer}>
@@ -57,7 +68,7 @@ const CarDetail = ({ navigation, route }) => {
             <Text>{carDet.title}</Text>
             <Text>{carDet.description}sss</Text>
             <Text style={styles.price}>${carDet.price}</Text>
-            <Button title="Add cart"></Button>
+            <Button title="Add cart" onPress={handleAddCart}></Button>
           </View>
         </View>
       ) : null}
