@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseUrl } from "../databases/realtimeDatabase";
 
 export const carsApi = createApi({
+  reducerPath: "carsApi",
   baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
   endpoints: (builder) => ({
     getCategories: builder.query({
@@ -22,6 +23,13 @@ export const carsApi = createApi({
         return responseTransformed;
       },
     }),
+    postOrder: builder.mutation({
+      query: ({ ...order }) => ({
+        url: "orders.json",
+        method: "POST",
+        body: order,
+      }),
+    }),
   }),
 });
 
@@ -29,4 +37,5 @@ export const {
   useGetCategoriesQuery,
   useGetCarsByCategoryQuery,
   useGetCarByIdQuery,
+  usePostOrderMutation,
 } = carsApi;
