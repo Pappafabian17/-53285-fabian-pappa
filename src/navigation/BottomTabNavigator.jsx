@@ -6,7 +6,8 @@ import HomeStackNavigator from "./HomeStackNavigator";
 import { FontAwesome5, FontAwesome6, FontAwesome } from "@expo/vector-icons";
 import CartStack from "./CartStackNavigator";
 import OrderStack from "./OrderStackNavigator";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons, Ionicons } from "@expo/vector-icons";
+import MyProfileStack from "./MyProfileStack";
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
@@ -67,6 +68,24 @@ const BottomTabNavigator = () => {
                   name="receipt-long"
                   size={24}
                   color={focused ? "white" : "black"}
+                />
+              </View>
+            );
+          },
+        }}
+      />
+
+      <Tab.Screen
+        name="My profile"
+        component={MyProfileStack}
+        options={{
+          tabBarIcon: ({ focused }) => {
+            return (
+              <View>
+                <Ionicons
+                  name="person-circle"
+                  size={24}
+                  color={focused ? "black" : "black"}
                 />
               </View>
             );

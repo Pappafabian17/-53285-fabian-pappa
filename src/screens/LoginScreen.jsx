@@ -11,7 +11,7 @@ const LoginScreen = ({ navigation }) => {
   const [triggerSignIn, result] = useSignInMutation();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
+  const [error, setError] = useState("");
   useEffect(() => {
     if (result.isSuccess) {
       console.log("🕵🏻 ~ useEffect ~ result:", result);
@@ -24,18 +24,33 @@ const LoginScreen = ({ navigation }) => {
     }
   }, [result]);
 
-  const onSubmit = () => {
-    triggerSignIn({ email, password });
+  const onSubmit = async () => {
+    try {
+      setError(""); // Limpiamos el error antes de intentar iniciar sesión
+
+      if (!email || !password) {
+        setError("Email and password are required");
+      } else {
+        await triggerSignIn({ email, password });
+
+        if (result.isError) {
+          setError("Email or password incorrect");
+        }
+      }
+    } catch (error) {
+      setError("An error occurred while signing in");
+      console.error("Error signing in:", error);
+    }
   };
   return (
     <View style={styles.main}>
       <View style={styles.container}>
         <Text style={styles.title}>Login to start</Text>
-        <InputForm label={"email"} onChange={setEmail} error={""} />
+        <InputForm label={"email"} onChange={setEmail} error={error} />
         <InputForm
           label={"password"}
           onChange={setPassword}
-          error={""}
+          error={error}
           isSecure={true}
         />
         <SubmitButton onPress={onSubmit} title="Send" />
