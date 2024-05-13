@@ -27,6 +27,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setUser, clearUserm, setCameraImage } = authSlice.actions;
+export const { setUser, clearUser, setCameraImage } = authSlice.actions;
 
 export default authSlice.reducer;
