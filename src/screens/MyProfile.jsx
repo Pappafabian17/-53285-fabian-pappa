@@ -1,12 +1,14 @@
 import { Image, StyleSheet, View } from "react-native";
 import React from "react";
 import AddButton from "../components/AddButton";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetProfileImageQuery } from "../services/service";
+import { clearUser } from "../features/User/userSlice";
 const MyProfile = ({ navigation }) => {
   /* const {localId, imageCamera} = useSelector(state => state.auth.value)
     const {data: imageFromBase} = useGetProfileImageQuery(localId) */
 
+  const dispatch = useDispatch();
   const { imageCamera, localId } = useSelector((state) => state.auth.value);
   const { data: imageFromBase } = useGetProfileImageQuery(localId);
 
@@ -14,6 +16,9 @@ const MyProfile = ({ navigation }) => {
     navigation.navigate("ImageSelector");
   };
 
+  const signOut = () => {
+    dispatch(clearUser());
+  };
   const defaultImageRoute = "../../assets/images/defaultProfile.png";
 
   return (
@@ -31,7 +36,15 @@ const MyProfile = ({ navigation }) => {
           resizeMode="cover"
         />
       )}
-      <AddButton onPress={launchCamera} title="Add profile picture" />
+      <AddButton
+        onPress={launchCamera}
+        title={
+          imageFromBase || imageCamera
+            ? "Edit profile picture"
+            : "Add profile picture"
+        }
+      />
+      <AddButton onPress={signOut} title="Sign out" />
     </View>
   );
 };

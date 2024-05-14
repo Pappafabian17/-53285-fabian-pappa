@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import { Image, View, StyleSheet, Text } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import * as ExpoLibrary from "expo-media-library";
 import { useDispatch, useSelector } from "react-redux";
 import { setCameraImage } from "../features/User/userSlice";
 import AddButton from "../components/AddButton";
-import { usePostProfileImageMutation } from "../services/service";
+import {
+  useGetProfileImageQuery,
+  usePostProfileImageMutation,
+} from "../services/service";
 // import { usePostProfileImageMutation } from "../services/shopService";
 // import { usePostProfileImageMutation } from "../Services/shopServices";
 // import { saveImage } from "../Features/User/userSlice";
 
 const ImageSelector = ({ navigation }) => {
+  const { localId } = useSelector((state) => state.auth.value);
   const [image, setImage] = useState(null);
+  const { data: imageFromBase } = useGetProfileImageQuery(localId);
 
   const [triggerPostImage, result] = usePostProfileImageMutation();
-
-  const { localId } = useSelector((state) => state.auth.value);
 
   console.log("localID", localId);
 
@@ -80,6 +84,32 @@ const ImageSelector = ({ navigation }) => {
         } */
   };
 
+  const verifyGalleryPermissions = async () => {
+    const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    return granted;
+  };
+
+  const pickGalleryImage = async () => {
+    try {
+      const permissionGallery = await verifyGalleryPermissions();
+      if (permissionGallery) {
+        const result = await ImagePicker.launchImageLibraryAsync({
+          base64: true,
+          aspect: [1, 1],
+          allowsEditing: true,
+          mediaTypes: ImagePicker.MediaTypeOptions.Images,
+          quality: 0.2,
+        });
+        if (!result.canceled) {
+          const image = `data:image/jpeg;base64,${result.assets[0].base64}`;
+          setImage(image);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const confirmImage = async () => {
     try {
       dispatch(setCameraImage(image));
@@ -99,10 +129,17 @@ const ImageSelector = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {image ? (
+      {image || imageFromBase ? (
         <>
-          <Image source={{ uri: image }} style={styles.image} />
+          <Image
+            source={{ uri: image || imageFromBase?.image }}
+            style={styles.image}
+          />
           <AddButton title="Take another photo" onPress={pickImage} />
+          <AddButton
+            title="Pick photo from gallery"
+            onPress={pickGalleryImage}
+          />
           <AddButton title="Confirm photo" onPress={confirmImage} />
         </>
       ) : (
