@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
-    fontFamily: "PlayFair",
+    // fontFamily: "PlayFair",
     fontSize: 22,
   },
 });
