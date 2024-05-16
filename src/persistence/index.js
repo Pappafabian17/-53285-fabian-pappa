@@ -3,7 +3,6 @@ import * as ExpoSQLite from "expo-sqlite";
 const db = ExpoSQLite.openDatabase("sessions.db");
 
 export const initSQLiteDB = () => {
-  console.log("Will create table");
   const promise = new Promise((resolve, reject) => {
     db.transaction((tx) => {
       //Define SQL statement. BEWARE of PARENTHESIS
@@ -15,25 +14,31 @@ export const initSQLiteDB = () => {
       );
     });
   });
-  console.log("will return promise");
   return promise;
 };
 
 export const insertSession = ({ email, localId, token }) => {
+  console.log("email", email);
+  console.log("token", token);
+  console.log("localId", localId);
   const promise = new Promise((resolve, reject) => {
     db.transaction((tx) => {
-      //Define SQL statement. BEWARE of PARENTHESIS
       tx.executeSql(
         "INSERT INTO sessions (email, localId, token) VALUES (?, ?, ?);",
-        [email, localId, token], //Parameters
-        (_, result) => resolve(result), //Resolve trasaction
-        (_, error) => reject(error) //Transaction error
+        [email, localId, token],
+        (_, result) => {
+          console.log("Resultado de la inserción:", result);
+          resolve(result);
+        },
+        (_, error) => {
+          console.error("Error al insertar:", error);
+          reject(error);
+        }
       );
     });
   });
   return promise;
 };
-
 /* export const getSession = () => {
   const promise = new Promise((resolve, reject) => {
       db.transaction((tx) => {

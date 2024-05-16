@@ -5,6 +5,7 @@ import SubmitButton from "../components/SubmitButton";
 import { useSignInMutation } from "../services/authService";
 import { setUser } from "../features/User/userSlice";
 import { useDispatch } from "react-redux";
+import { insertSession } from "../persistence";
 
 const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -12,7 +13,9 @@ const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState("");
-  useEffect(() => {
+
+  /* con el useEffect de aca abajo funciona bien pero no tiene la funcion insertSession */
+  /*  useEffect(() => {
     if (result.isSuccess) {
       console.log("🕵🏻 ~ useEffect ~ result:", result);
       dispatch(
@@ -23,7 +26,55 @@ const LoginScreen = ({ navigation }) => {
         })
       );
     }
+  }, [result]); */
+
+  useEffect(() => {
+    if (result?.data && result.isSuccess) {
+      dispatch(
+        setUser({
+          email: result.data.email,
+          idToken: result.data.idToken,
+          localId: result.data.localId,
+        })
+      );
+      insertSession({
+        email: result.data.email,
+        localId: result.data.localId,
+        idToken: result.data.idToken,
+      })
+        .then((response) => {
+          console.log("response", response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }, [result]);
+
+  /* useEffect(() => {
+    (async () => {
+      if (result?.data && result.isSuccess) {
+        console.log("DATAAAAAAAAAAAAAAAAA", result.data);
+        try {
+          const res = await insertSession({
+            email: result.data.email,
+            localId: result.data.localId,
+            token: result.data.idToken,
+          });
+          console.log("res!!!!!", res);
+          dispatch(
+            setUser({
+              email: result.data.email,
+              idToken: result.data.idToken,
+              localId: result.data.localId,
+            })
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    })();
+  }, [result]); */
 
   const onSubmit = async () => {
     try {
@@ -32,6 +83,8 @@ const LoginScreen = ({ navigation }) => {
       if (!email || !password) {
         setError("Email and password are required");
       } else {
+        console.log("email en else", email);
+        console.log("password en else", password);
         await triggerSignIn({ email, password });
 
         if (result.isError) {
