@@ -24,8 +24,8 @@ export const insertSession = ({ email, localId, token }) => {
   const promise = new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
-        "INSERT INTO sessions (email, localId, token) VALUES (?, ?, ?);",
-        [email, localId, token],
+        "INSERT INTO sessions (localId, email, token) VALUES (?, ?, ?);",
+        [localId, email, token],
         (_, result) => {
           console.log("Resultado de la inserción:", result);
           resolve(result);
@@ -39,6 +39,22 @@ export const insertSession = ({ email, localId, token }) => {
   });
   return promise;
 };
+
+export const getSession = () => {
+  const promise = new Promise((resolve, reject) => {
+    db.transaction((tx) => {
+      //Define SQL statement. BEWARE of PARENTHESIS
+      tx.executeSql(
+        "SELECT * from sessions",
+        [], //Parameters
+        (_, result) => resolve(result), //Resolve trasaction
+        (_, error) => reject(error) //Transaction error
+      );
+    });
+  });
+  return promise;
+};
+
 /* export const getSession = () => {
   const promise = new Promise((resolve, reject) => {
       db.transaction((tx) => {

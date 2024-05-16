@@ -28,33 +28,31 @@ const LoginScreen = ({ navigation }) => {
     }
   }, [result]); */
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (result?.data && result.isSuccess) {
-      dispatch(
-        setUser({
-          email: result.data.email,
-          idToken: result.data.idToken,
-          localId: result.data.localId,
-        })
-      );
       insertSession({
         email: result.data.email,
         localId: result.data.localId,
-        idToken: result.data.idToken,
+        token: result.data.idToken,
       })
         .then((response) => {
-          console.log("response", response);
+          dispatch(
+            setUser({
+              email: result.data.email,
+              idToken: result.data.idToken,
+              localId: result.data.localId,
+            })
+          );
         })
         .catch((err) => {
           console.log(err);
         });
     }
-  }, [result]);
+  }, [result]); */
 
-  /* useEffect(() => {
+  useEffect(() => {
     (async () => {
       if (result?.data && result.isSuccess) {
-        console.log("DATAAAAAAAAAAAAAAAAA", result.data);
         try {
           const res = await insertSession({
             email: result.data.email,
@@ -74,7 +72,7 @@ const LoginScreen = ({ navigation }) => {
         }
       }
     })();
-  }, [result]); */
+  }, [result]);
 
   const onSubmit = async () => {
     try {
