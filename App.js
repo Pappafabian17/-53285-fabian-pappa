@@ -5,15 +5,11 @@ import { Provider } from "react-redux";
 import store from "./src/Store";
 import { initSQLiteDB } from "./src/persistence";
 
-(async () => {
+/* (async () => {
   try {
     const response = await initSQLiteDB();
-    console.log({ responseCreatingDB: response });
-    console.log("DB initialized");
-  } catch (error) {
-    console.log({ errorCreatingDB: error });
-  }
-})();
+  } catch (error) {}
+})(); */
 
 const App = () => {
   const [fontsLoaded, fontError] = useFonts({

@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+/* import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -12,9 +12,6 @@ const Counter = () => {
   const count = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
   const [inputToAdd, setInputToAdd] = useState(null);
-  // let count = 0
-
-  console.log(count);
 
   return (
     <View style={styles.container}>
@@ -90,3 +87,4 @@ const styles = StyleSheet.create({
     fontFamily: "Josefin",
   },
 });
+ */

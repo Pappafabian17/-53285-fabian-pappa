@@ -6,9 +6,6 @@ import { useGetProfileImageQuery } from "../services/service";
 import { clearUser } from "../features/User/userSlice";
 import { truncateSessionsTable } from "../persistence";
 const MyProfile = ({ navigation }) => {
-  /* const {localId, imageCamera} = useSelector(state => state.auth.value)
-    const {data: imageFromBase} = useGetProfileImageQuery(localId) */
-
   const dispatch = useDispatch();
   const { imageCamera, localId } = useSelector((state) => state.auth.value);
   const { data: imageFromBase } = useGetProfileImageQuery(localId);
@@ -20,10 +17,9 @@ const MyProfile = ({ navigation }) => {
   const signOut = async () => {
     try {
       const response = await truncateSessionsTable();
-      console.log(response);
       dispatch(clearUser());
     } catch (error) {
-      console.log({ errorSignOutDB: error });
+      console.error({ errorSignOutDB: error });
     }
   };
 

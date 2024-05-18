@@ -1,6 +1,5 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useState, useEffect } from "react";
-// import carsData from "../data/cars.json";
 import SearchBar from "../components/SearchBar";
 import CarItem from "../components/CarItem";
 import { useDispatch } from "react-redux";
@@ -32,10 +31,7 @@ const Cars = ({ navigation, route }) => {
       setError("Don't use digits");
       return;
     }
-    // const carsPreFiltered = carsData.filter(
-    //   //antes tenia car.category === categorySelected.categoy porque categorySelected es un objeto
-    //   (car) => car.category === categorySelected
-    // );
+
     if (!isLoading) {
       const carFilteredByUser = carsFetched?.filter((car) =>
         car.title.toLocaleLowerCase().includes(word.toLocaleLowerCase())

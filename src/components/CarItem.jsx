@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { setIdSelected } from "../features/Shop/shopSlice";
 
 const CarItem = ({ car, navigation }) => {
-  // console.log("CAR DE ITEM", car);
   const dispatch = useDispatch();
 
   const handleNavigate = () => {
@@ -41,7 +40,6 @@ const styles = StyleSheet.create({
     height: 120,
     width: "65%",
     borderRadius: 8,
-    // padding: 5,
   },
   textCar: {
     width: "35%",

@@ -1,45 +1,46 @@
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import CartItem from "../components/CartItem";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { usePostOrderMutation } from "../services/service";
-// import CartData from "../data/cart.json";
+import { clearCart } from "../features/Cart/cartSlice";
 
-const Cart = () => {
-  // console.log(CartData);
-
+const Cart = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const { localId } = useSelector((state) => state.auth.value);
   const { items: CartData, total } = useSelector((state) => state.cart.value);
-
   const [triggerPostOrder, result] = usePostOrderMutation();
 
-  console.log("CAAAAART=====", CartData);
-
-  /* const total = CartData.reduce(
-    (acumulador, currentItem) =>
-      (acumulador += currentItem.price * currentItem.quantity),
-    0
-  ); */
   const onConfirmOrder = () => {
-    triggerPostOrder({ items: CartData, user: "Fabian", total });
+    triggerPostOrder({ items: CartData, user: localId, total })
+      .unwrap()
+      .then(() => {
+        dispatch(clearCart()); // vaciamos el carrito
+        navigation.navigate("Orders");
+      });
   };
-
-  console.log("result", result);
 
   return (
     <View style={styles.container}>
       <FlatList
         data={CartData}
-        keyExtractor={(pepe) => pepe.id}
+        keyExtractor={(item) => item.id}
         renderItem={({ item }) => {
           return <CartItem cartItem={item} />;
         }}
       />
-      <View style={styles.totalContainer}>
-        <Pressable onPress={onConfirmOrder}>
-          <Text>Confirm</Text>
+      {CartData.length === 0 ? (
+        <View style={styles.emptyContainer}>
+          <Text style={styles.emptyText}>Carrito vacio</Text>
+        </View>
+      ) : (
+        <Pressable style={styles.confirmButton} onPress={onConfirmOrder}>
+          <View style={styles.totalContainer}>
+            <Text style={styles.confirmText}>Confirm</Text>
+            <Text style={styles.totalText}>Total: ${total}</Text>
+          </View>
         </Pressable>
-        <Text>Total: ${total}</Text>
-      </View>
+      )}
     </View>
   );
 };
@@ -48,13 +49,42 @@ export default Cart;
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "space-between",
     flex: 1,
-    marginBottom: 120,
+    justifyContent: "space-between",
+    padding: 10,
+    backgroundColor: "#f7f7f7",
+  },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  emptyText: {
+    fontSize: 18,
+    color: "#888",
   },
   totalContainer: {
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
+    backgroundColor: "#4CAF50",
+    padding: 15,
+    borderRadius: 10,
+  },
+  confirmButton: {
+    marginBottom: 20,
+    marginHorizontal: 20,
+    borderRadius: 10,
+    overflow: "hidden",
+  },
+  confirmText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "white",
+  },
+  totalText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "white",
   },
 });

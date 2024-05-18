@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Image, View, StyleSheet, Text } from "react-native";
 import * as ImagePicker from "expo-image-picker";
-import * as ExpoLibrary from "expo-media-library";
 import { useDispatch, useSelector } from "react-redux";
 import { setCameraImage } from "../features/User/userSlice";
 import AddButton from "../components/AddButton";
@@ -9,9 +8,6 @@ import {
   useGetProfileImageQuery,
   usePostProfileImageMutation,
 } from "../services/service";
-// import { usePostProfileImageMutation } from "../services/shopService";
-// import { usePostProfileImageMutation } from "../Services/shopServices";
-// import { saveImage } from "../Features/User/userSlice";
 
 const ImageSelector = ({ navigation }) => {
   const { localId } = useSelector((state) => state.auth.value);
@@ -20,26 +16,13 @@ const ImageSelector = ({ navigation }) => {
 
   const [triggerPostImage, result] = usePostProfileImageMutation();
 
-  console.log("localID", localId);
-
   const dispatch = useDispatch();
-
-  /* const [triggerSaveImage, resultSaveImage] = usePostProfileImageMutation();
-    const dispatch = useDispatch();
-    const { localId } = useSelector((state) => state.auth.value); */
 
   const verifyCameraPermissions = async () => {
     const { granted } = await ImagePicker.requestCameraPermissionsAsync();
     return granted;
   };
-  /* const verifyCameraPermissions = async () => {
-        const { granted } = await ImagePicker.requestCameraPermissionsAsync();
-        if (!granted) {
-            return false;
-        }
-        return true;
-    };
- */
+
   const pickImage = async () => {
     try {
       const permissionCamera = await verifyCameraPermissions();
@@ -52,36 +35,13 @@ const ImageSelector = ({ navigation }) => {
           base64: true,
           quality: 0.2,
         });
-        /* console.log(result);
-                console.log(result.assets[0].base64.length) */
+
         if (!result.canceled) {
           const image = `data:image/jpeg;base64,${result.assets[0].base64}`;
           setImage(image);
         }
       }
-    } catch (error) {
-      console.log(error);
-    }
-
-    /* //Permission for camera
-        const isCameraOk = await verifyCameraPermissions();
-
-        if (isCameraOk) {
-            // No permissions request is necessary for launching the image library
-            let result = await ImagePicker.launchCameraAsync({
-                mediaTypes: ImagePicker.MediaTypeOptions.All,
-                allowsEditing: true,
-                aspect: [1, 1],
-                base64: true,
-                quality: 0.1,
-            });
-
-            if (!result.canceled) {
-                // console.log(result.assets[0].base64.length);
-                const image = `data:image/jpeg;base64,${result.assets[0].base64}`
-                setImage(image)
-            }
-        } */
+    } catch (error) {}
   };
 
   const verifyGalleryPermissions = async () => {
@@ -105,9 +65,7 @@ const ImageSelector = ({ navigation }) => {
           setImage(image);
         }
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const confirmImage = async () => {
@@ -115,16 +73,7 @@ const ImageSelector = ({ navigation }) => {
       dispatch(setCameraImage(image));
       triggerPostImage({ image, localId });
       navigation.goBack();
-    } catch (error) {
-      console.log(error);
-    }
-    /* try {
-            dispatch(setCameraImage(image));
-            triggerSaveImage({image, localId})
-        } catch (error) {
-            console.log(error);
-        }
-        navigation.goBack(); */
+    } catch (error) {}
   };
 
   return (

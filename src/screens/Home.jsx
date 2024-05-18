@@ -1,20 +1,15 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import React from "react";
-// import brands from "../data/brands.json";
-
 import BrandsItems from "../components/BrandsItems";
-import Counter from "../components/Counter";
 import { useGetCategoriesQuery } from "../services/service";
 
 const Home = ({ navigation }) => {
   const { data: brands, error, isLoading } = useGetCategoriesQuery();
-  console.log("sarasa", brands);
   return (
     <View style={styles.flatListContainer}>
       <View>
         <Text style={styles.title}>Seleccione una Marca :</Text>
       </View>
-      <Counter />
       <FlatList
         data={brands}
         renderItem={({ item }) => (
@@ -36,7 +31,7 @@ export default Home;
 const styles = StyleSheet.create({
   flatListContainer: {
     width: "100%",
-    backgroundColor: "#c9dbdb",
+    backgroundColor: "#b2b3f3",
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",

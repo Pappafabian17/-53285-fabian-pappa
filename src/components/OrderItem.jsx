@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import React from "react";
 
-const OrderItem = ({ order }) => {
+const OrderItem = ({ order, onPress }) => {
   const total = order.items.reduce(
     (acc, currentItem) => (acc += currentItem.price * currentItem.quantity),
     0
@@ -12,11 +12,13 @@ const OrderItem = ({ order }) => {
     <View style={styles.card} onPress={() => {}}>
       <View style={styles.textContainer}>
         <Text style={styles.text}>
-          {new Date(order.createdAt).toLocaleString()}
+          {new Date(order?.createdAt || null).toLocaleString()}
         </Text>
         <Text style={styles.text2}>${total}</Text>
       </View>
-      <Feather name="search" size={30} color="black" />
+      <TouchableOpacity onPress={onPress}>
+        <Feather name="search" size={30} color="black" />
+      </TouchableOpacity>
     </View>
   );
 };

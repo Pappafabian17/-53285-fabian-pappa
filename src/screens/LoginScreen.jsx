@@ -14,42 +14,6 @@ const LoginScreen = ({ navigation }) => {
   const [password, setPassword] = useState();
   const [error, setError] = useState("");
 
-  /* con el useEffect de aca abajo funciona bien pero no tiene la funcion insertSession */
-  /*  useEffect(() => {
-    if (result.isSuccess) {
-      console.log("🕵🏻 ~ useEffect ~ result:", result);
-      dispatch(
-        setUser({
-          email: result.data.email,
-          idToken: result.data.idToken,
-          localId: result.data.localId,
-        })
-      );
-    }
-  }, [result]); */
-
-  /* useEffect(() => {
-    if (result?.data && result.isSuccess) {
-      insertSession({
-        email: result.data.email,
-        localId: result.data.localId,
-        token: result.data.idToken,
-      })
-        .then((response) => {
-          dispatch(
-            setUser({
-              email: result.data.email,
-              idToken: result.data.idToken,
-              localId: result.data.localId,
-            })
-          );
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [result]); */
-
   useEffect(() => {
     (async () => {
       if (result?.data && result.isSuccess) {
@@ -59,7 +23,6 @@ const LoginScreen = ({ navigation }) => {
             localId: result.data.localId,
             token: result.data.idToken,
           });
-          console.log("res!!!!!", res);
           dispatch(
             setUser({
               email: result.data.email,
@@ -68,7 +31,7 @@ const LoginScreen = ({ navigation }) => {
             })
           );
         } catch (err) {
-          console.log(err);
+          console.error(err);
         }
       }
     })();
@@ -81,8 +44,6 @@ const LoginScreen = ({ navigation }) => {
       if (!email || !password) {
         setError("Email and password are required");
       } else {
-        console.log("email en else", email);
-        console.log("password en else", password);
         await triggerSignIn({ email, password });
 
         if (result.isError) {
@@ -129,13 +90,14 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#9b7794",
+    backgroundColor: "#b2b3f3",
     gap: 15,
     paddingVertical: 20,
     borderRadius: 10,
   },
   title: {
-    fontSize: 22,
+    fontSize: 30,
+    fontWeight: "800",
     fontFamily: "Josefin",
   },
   sub: {
@@ -144,6 +106,7 @@ const styles = StyleSheet.create({
   },
   subLink: {
     fontSize: 14,
+    fontWeight: "800",
     color: "blue",
   },
 });

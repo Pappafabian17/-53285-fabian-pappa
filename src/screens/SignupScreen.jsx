@@ -1,18 +1,11 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { isAtLeastSixCharacters, isValidEmail } from "../validations/auth";
 import { useSignUpMutation } from "../services/authService";
 import { setUser } from "../features/User/userSlice";
 import { signupSchema } from "../validations/authSchema";
 import InputForm from "../components/InputForm";
 import SubmitButton from "../components/SubmitButton";
-/* import { useSignUpMutation } from "../Services/authServices";
-import { setUser } from "../Features/User/userSlice";
-import { useSignUpMutation } from "../services/authService";
-import { useDispatch } from "react-redux";
-import { setUser } from "../features/auth/authSlice";
-import { signupSchema } from "../validations/singupSchema"; */
 
 const SignupScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -28,7 +21,6 @@ const SignupScreen = ({ navigation }) => {
 
   useEffect(() => {
     if (result.isSuccess) {
-      console.log("🕵🏻 ~ useEffect ~ result:", result);
       dispatch(
         setUser({
           email: result.data.email,
@@ -51,9 +43,6 @@ const SignupScreen = ({ navigation }) => {
       });
       triggerSignUp({ email, password, returnSecureToken: true });
     } catch (err) {
-      console.log("Entro al signup del error");
-      console.log(err.path);
-      console.log(err.message);
       switch (err.path) {
         case "email":
           setErrorMail(err.message);
@@ -66,32 +55,6 @@ const SignupScreen = ({ navigation }) => {
           break;
       }
     }
-    /* try {
-            //Submit logic with validations
-            const isValidVariableEmail = isValidEmail(email)
-            const isCorrectPassword = isAtLeastSixCharacters(password)
-            const isRepeatedPasswordCorrect = password === confirmPassword
-
-            if (isValidVariableEmail && isCorrectPassword && isRepeatedPasswordCorrect) {
-                const request = {
-                    email,
-                    password,
-                    returnSecureToken: true
-                }
-                triggerSignUp(request)
-            }
-
-            if (!isValidVariableEmail) setErrorMail ('Email is not correct')
-            else setErrorMail('')
-            if (!isCorrectPassword) setErrorPassword ('Password must be at least 6 characters')
-            else setErrorPassword('')
-            if (!isRepeatedPasswordCorrect) setErrorConfirmPassword ('Passwords must match')
-            else setErrorConfirmPassword('')
-
-        } catch (err) {
-            console.log("Catch error");
-            console.log(err.message);
-        } */
   };
 
   return (
@@ -135,13 +98,14 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "violet",
+    backgroundColor: "#b2b3f3",
     gap: 15,
     paddingVertical: 20,
     borderRadius: 10,
   },
   title: {
-    fontSize: 22,
+    fontSize: 30,
+    fontWeight: "800",
     fontFamily: "Josefin",
   },
   sub: {
@@ -151,6 +115,7 @@ const styles = StyleSheet.create({
   },
   subLink: {
     fontSize: 14,
+    fontWeight: "800",
     fontFamily: "Josefin",
     color: "blue",
   },

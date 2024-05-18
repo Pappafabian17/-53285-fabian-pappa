@@ -4,7 +4,7 @@ import { baseUrl } from "../databases/realtimeDatabase";
 export const carsApi = createApi({
   reducerPath: "carsApi",
   baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
-  tagTypes: ["profileImageGet"], //Declare tags
+  tagTypes: ["profileImageGet", "getOrders"],
   endpoints: (builder) => ({
     getCategories: builder.query({
       query: () => `brands.json`,
@@ -35,7 +35,11 @@ export const carsApi = createApi({
       query: (localId) => `profileImages/${localId}.json`,
       providesTags: ["profileImageGet"],
     }),
-    //We make a PUT request for not creating additional key, because de localId is already an unique key.
+    getOrders: builder.query({
+      query: () => `orders.json`,
+      providesTags: ["getOrders"],
+    }),
+
     postProfileImage: builder.mutation({
       query: ({ image, localId }) => ({
         url: `profileImages/${localId}.json`,
@@ -44,7 +48,7 @@ export const carsApi = createApi({
           image: image,
         },
       }),
-      invalidatesTags: ["profileImageGet"], //Invalidates will trigger a refetch on profileImageGet
+      invalidatesTags: ["profileImageGet"],
     }),
   }),
 });
@@ -56,4 +60,5 @@ export const {
   usePostOrderMutation,
   useGetProfileImageQuery,
   usePostProfileImageMutation,
+  useGetOrdersQuery,
 } = carsApi;
