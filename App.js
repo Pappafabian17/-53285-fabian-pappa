@@ -5,11 +5,13 @@ import { Provider } from "react-redux";
 import store from "./src/Store";
 import { initSQLiteDB } from "./src/persistence";
 
-/* (async () => {
+(async () => {
   try {
-    const response = await initSQLiteDB();
+    if (Platform.OS !== "web") {
+      const response = await initSQLiteDB();
+    }
   } catch (error) {}
-})(); */
+})();
 
 const App = () => {
   const [fontsLoaded, fontError] = useFonts({

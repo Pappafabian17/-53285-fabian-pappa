@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import React, { useState, useEffect } from "react";
 import InputForm from "../components/InputForm";
 import SubmitButton from "../components/SubmitButton";
@@ -15,14 +15,16 @@ const LoginScreen = ({ navigation }) => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    (async () => {
-      if (result?.data && result.isSuccess) {
+    if (result?.data && result.isSuccess) {
+      (async () => {
         try {
-          const res = await insertSession({
-            email: result.data.email,
-            localId: result.data.localId,
-            token: result.data.idToken,
-          });
+          if (Platform.OS !== "web") {
+            const response = await insertSession({
+              email: result.data.email,
+              localId: result.data.localId,
+              token: result.data.idToken,
+            });
+          }
           dispatch(
             setUser({
               email: result.data.email,
@@ -30,11 +32,11 @@ const LoginScreen = ({ navigation }) => {
               localId: result.data.localId,
             })
           );
-        } catch (err) {
-          console.error(err);
+        } catch (error) {
+          console.log(error);
         }
-      }
-    })();
+      })();
+    }
   }, [result]);
 
   const onSubmit = async () => {
